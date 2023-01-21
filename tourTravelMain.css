@@ -56,7 +56,7 @@ body {
     color: black;
 }
 
-.tb_VideoTour th{
+.tb_VideoTour tr{
     float: left;
     width: 150px;
     padding: 20px;
