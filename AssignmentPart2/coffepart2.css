@@ -72,6 +72,7 @@ body {
     display: table-cell;
     color: white;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    padding-left: 110px;
 }
 
 .Row_Div_Tbl {
@@ -173,4 +174,15 @@ body {
     border: 2px solid #352d2f;
     margin-right: 20px;
 
+}
+.nav_Favicon{
+
+    height: 50px;
+     width: 50px; 
+     margin-top: 5px
+}
+.h1_CompanyName{
+
+    text-align: center;
+     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
