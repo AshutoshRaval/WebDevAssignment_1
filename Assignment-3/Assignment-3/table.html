@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<!-- Also read chapter 9 from slides - Regular Expressions -->
+
+<html>
+<head>
+	<title>Table CheckList</title>
+	<link rel="stylesheet" type="text/css" href="table.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	
+</head>
+<body>
+	<table id="myTable">
+		<tr>
+			<th></th>
+			<th>STUDENT</th>
+			<th>ADVISOR</th>
+			<th>AWARD<br/>STATUS</th>
+			<th>SEMESTER</th>
+			<th>TYPE</th>
+			<th>BUDGET<br />#</th>
+			<th>PERCENTAGE</th>
+			<th class="colDelete" colspan="2">DELETE</th>
+		</tr>
+		<tr id="detailsRow1">
+			<td><input type="checkbox" onclick="rowHighLight('detailsRow1');"/><br /><br /><img src="down.png" width="25px" onclick="showHideRow('hiderow1');"/></td>
+			<td>Student 1</td>
+			<td>Teacher 1</td>
+			<td>Approved</td>
+			<td>Fall</td>
+			<td>TA</td>
+			<td>12345</td>
+			<td>100%</td>
+			<td class="colDelete"><button>Delete</button><td class="colDelete"><button>Edit</button></td>
+		</tr>
+		<tr  id="hiderow1" class="dropDownTextArea" ><td colspan="8">
+			Advisor:<br /><br />
+			Award Details<br />
+			Summer 1-2014(TA)<br />
+			Budget Number: <br />
+			Tuition Number: <br />
+			Comments:<br /><br /><br />
+			Award Status:<br /><br /><br />
+		</td></tr>
+		<tr id="detailsRow2">
+			<td><input type="checkbox" onclick="rowHighLight('detailsRow2');"/><br /><br /><img src="down.png" width="25px" onclick="showHideRow('hiderow2');"/></td>
+			<td>Student 2</td>
+			<td>Teacher 2</td>
+			<td>Approved</td>
+			<td>Fall</td>
+			<td>TA</td>
+			<td>23456</td>
+			<td>100%</td>
+			<td class="colDelete"><button>Delete</button><td class="colDelete"><button>Edit</button></td>
+		</tr>
+		<tr class="dropDownTextArea" id="hiderow2"><td colspan="8">
+			Advisor:<br /><br />
+			Award Details<br />
+			Summer 1-2014(TA)<br />
+			Budget Number: <br />
+			Tuition Number: <br />
+			Comments:<br /><br /><br />
+			Award Status:<br /><br /><br />
+		</td></tr>
+		<tr id="detailsRow3">
+			<td><input type="checkbox" onclick="rowHighLight('detailsRow3');"/><br /><br /><img src="down.png" width="25px" onclick="showHideRow('hiderow3');" /></td>
+			<td>Student 3</td>
+			<td>Teacher 3</td>
+			<td>Approved</td>
+			<td>Fall</td>
+			<td>TA</td>
+			<td>34567</td>
+			<td>100%</td>
+			<td class="colDelete"><button>Delete</button><td class="colDelete"><button>Edit</button></td>
+		</tr>
+		<tr class="dropDownTextArea" id="hiderow3"><td colspan="8">
+			Advisor:<br /><br />
+			Award Details<br />
+			Summer 1-2014(TA)<br />
+			Budget Number: <br />
+			Tuition Number: <br />
+			Comments:<br /><br /><br />
+			Award Status:<br /><br /><br />
+		</td></tr>
+	</table>
+
+	<br /><br />
+	
+	<button id="button" onclick="alert('I am an alert box!');" disabled >SUBMIT SELECTED AWARDS</button>
+	<button id="add" disabled:"disabled" >Add New Student</button>
+	
+
+	<nav class="socialmediaicons"></nav>
+	<script src="script.js"></script>
+	
+</body>
+</html>
