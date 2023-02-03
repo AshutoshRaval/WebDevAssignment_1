@@ -20,7 +20,8 @@
 			<th>TYPE</th>
 			<th>BUDGET<br />#</th>
 			<th>PERCENTAGE</th>
-			<th class="colDelete" colspan="2">DELETE</th>
+			<th class="colDelete">DELETE</th>
+			<th class="colDelete">EDIT</th>
 		</tr>
 		<tr id="detailsRow1">
 			<td><input type="checkbox" onclick="rowHighLight('detailsRow1');"/><br /><br /><img src="down.png" width="25px" onclick="showHideRow('hiderow1');"/></td>
@@ -31,7 +32,8 @@
 			<td>TA</td>
 			<td>12345</td>
 			<td>100%</td>
-			<td class="colDelete"><button>Delete</button><td class="colDelete"><button>Edit</button></td>
+			<td class="colDelete"></td>
+			<td class="colDelete"></td>
 		</tr>
 		<tr  id="hiderow1" class="dropDownTextArea" ><td colspan="8">
 			Advisor:<br /><br />
@@ -51,7 +53,8 @@
 			<td>TA</td>
 			<td>23456</td>
 			<td>100%</td>
-			<td class="colDelete"><button>Delete</button><td class="colDelete"><button>Edit</button></td>
+			<td class="colDelete" ></td>
+			<td class="colDelete" ></td>
 		</tr>
 		<tr class="dropDownTextArea" id="hiderow2"><td colspan="8">
 			Advisor:<br /><br />
@@ -71,7 +74,8 @@
 			<td>TA</td>
 			<td>34567</td>
 			<td>100%</td>
-			<td class="colDelete"><button>Delete</button><td class="colDelete"><button>Edit</button></td>
+			<td class="colDelete" ></td>
+			<td class="colDelete"></td>
 		</tr>
 		<tr class="dropDownTextArea" id="hiderow3"><td colspan="8">
 			Advisor:<br /><br />
@@ -87,7 +91,7 @@
 	<br /><br />
 	
 	<button id="button" onclick="alert('I am an alert box!');" disabled >SUBMIT SELECTED AWARDS</button>
-	<button id="add" disabled:"disabled" >Add New Student</button>
+	<button id="add" disabled:"disabled" onclick="addStudent()" >Add New Student</button>
 	
 
 	<nav class="socialmediaicons"></nav>
