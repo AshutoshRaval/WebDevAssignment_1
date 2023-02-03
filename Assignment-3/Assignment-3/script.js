@@ -61,9 +61,9 @@ function rowHighLight(row) {
     var all_col = document.getElementsByClassName('colDelete');
     for (var i = 0; i < all_col.length; i++) {
       
-      if(i==0 || i==1 ||  i == ((selectedRow*2)+1)|| i == ((selectedRow*2))){
+      // if(i==0 || i==1 ||  i == ((selectedRow*2)+1)|| i == ((selectedRow*2))){
         all_col[i].style.display = "revert";
-      }
+      // }
         
       
       
