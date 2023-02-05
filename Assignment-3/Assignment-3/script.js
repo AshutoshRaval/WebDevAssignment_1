@@ -90,10 +90,6 @@ function rowHighLight(row) {
 
 }
 
-function alrt2() {
-
-  alert(":")
-}
 
 function addStudent() {
 
