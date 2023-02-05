@@ -41,17 +41,26 @@ function rowHighLight(row) {
     document.getElementById(row).style.backgroundColor = '';
     selectcount--;
     document.getElementById(row).cells[8].innerHTML = "";
+    document.getElementById(row).cells[8].style.display = "none"
     document.getElementById(row).cells[9].innerHTML = "";
+    document.getElementById(row).cells[9].style.display = "none"
   }
   else {
     document.getElementById(row).style.backgroundColor = 'yellow';
     selectcount++
-    document.getElementById("myTable").rows[selectedRow].cells[8].innerHTML = `<td><button id="deleteButton" onclick="deleteRow(this);">Delete</button></td>`;
-    document.getElementById("myTable").rows[selectedRow].cells[9].innerHTML = `<td><button id="editButton" onclick="editRow();">Edit</button></td>`;
+    var deleteBtn = document.getElementById("myTable").rows[selectedRow].cells[8]
+    deleteBtn.innerHTML  = `<td ><button onclick="deleteRow(this);">Delete</button></td>`;
+    deleteBtn.setAttribute("id","deleteButton" + selectedRow)
+    deleteBtn.style.display = "revert";
+    var editBtn = document.getElementById("myTable").rows[selectedRow].cells[9]
+    editBtn.innerHTML  =  `<td ><button onclick="editRow();">Edit</button></td>`;
+    editBtn.setAttribute("id","editButton" + selectedRow)
+    editBtn.style.display = "revert";
     //document.getElementsByClassName("colDelete").setAttribute("display","revert");
 
   }
 
+  //checkselected(selectcount);
   if (selectcount > 0) {
 
 
@@ -60,13 +69,9 @@ function rowHighLight(row) {
     submitButton.disabled = false;
     var all_col = document.getElementsByClassName('colDelete');
     for (var i = 0; i < all_col.length; i++) {
-      
-      // if(i==0 || i==1 ||  i == ((selectedRow*2)+1)|| i == ((selectedRow*2))){
-        all_col[i].style.display = "revert";
-      // }
-        
-      
-      
+        if(i==0 || i==1){
+          all_col[i].style.display = "revert";
+        }  
     }
   }
   else {
@@ -76,11 +81,18 @@ function rowHighLight(row) {
     submitButton.disabled = true;
     var all_col = document.getElementsByClassName('colDelete');
     for (var i = 0; i < all_col.length; i++) {
+
       all_col[i].style.display = "none";
+
     }
-    
+
   }
 
+}
+
+function alrt2() {
+
+  alert(":")
 }
 
 function addStudent() {
@@ -108,9 +120,9 @@ function addStudent() {
     row.insertCell(6).innerHTML = tableLength.toString() + (tableLength + 1).toString() + (tableLength + 2).toString() + (tableLength + 3).toString() + (tableLength + 4).toString();
     row.insertCell(7).innerHTML = "100%";
     var C8 = row.insertCell(8);
-    C8.setAttribute("class","colDelete");
+    C8.setAttribute("class", "colDelete");
     var C9 = row.insertCell(9);
-    C9.setAttribute("class","colDelete");
+    C9.setAttribute("class", "colDelete");
 
     var newRow = table.insertRow(document.getElementById("myTable").rows.length);
     newRow.setAttribute("class", "dropDownTextArea");
@@ -133,16 +145,28 @@ function addStudent() {
 
 function deleteRow(index) {
 
-
+  var submitButton = document.getElementById('button');
   var selectedRow = index.parentNode.parentNode.rowIndex;
-
   document.getElementById("myTable").deleteRow(selectedRow + 1);
   document.getElementById("myTable").deleteRow(selectedRow);
-
+  selectcount--;
+  //checkselected(selectcount);
+  if(selectcount==0){
+      submitButton.style.backgroundColor = 'grey';
+      submitButton.style.borderColor = 'grey';
+      submitButton.disabled = true;
+      var all_col = document.getElementsByClassName('colDelete');
+      for (var i = 0; i < all_col.length; i++) {
+  
+        all_col[i].style.display = "none";
+  
+      }
+  }
 }
 
 function editRow() {
-  alert("Edit the Records");
+  //alert("Edit the Records");
+  window.prompt("Edit Details", "");
 }
 // const table = document.getElementById('myTable"');
 // const column = table.getElementsByTagName('col')[col_no];
