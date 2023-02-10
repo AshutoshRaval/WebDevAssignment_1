@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>Feedback</title>
+	<style>
+		label {
+			float: left;
+			width: 150px;
+		}
+
+		#container {
+			width: 700px;
+			margin: auto;
+			background-color: beige;
+		}
+
+		main {
+			padding: 50px;
+		}
+
+		.Validation {
+
+			color: red;
+			display: inline;
+			margin-left: 35px;
+			display: none;
+		}
+
+		table,
+		th,
+		td {
+			border: 1px solid black;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="container">
+
+		<main>
+			<h2>Feeback</h2>
+			<h3>Love something? Hate something? Let us know!</h3>
+			Note : Fields marked with an asterisk(*) are mandatory
+			<br><br>
+			<form method="post" onsubmit="return false" novalidate>
+				<label>Title*:</label>
+				<input type="radio" name="title" id="miss" value="miss" required="required" />Miss
+				<input type="radio" name="title" id="mr" value="mr" required="required" />Mr.
+				<input type="radio" name="title" id="mrs" value="mrs" required="required" />Mrs.
+				<p Class="Validation" id="valtitle">Select Title</p>
+				<br><br>
+
+				<label for="firstName">First Name*:</label>
+				<input type="text" name="firstName" id="firstName" placeholder="First Name" />
+				<p Class="Validation" id="valfirstName">Select First Name</p>
+				<br><br>
+
+				<label for="" class="aaa" id="dd"></label>
+				<div class="ddd"></div>
+				<label for="lastName">Last Name*:</label>
+				<input type="text" name="lastName" id="lastName" placeholder="Last Name" />
+				<p Class="Validation" id="vallastName">Select Last Name</p>
+				<br><br>
+
+
+				<label for="emailId">Email Id*:</label>
+				<input type="text" name="emailId" id="emailId" placeholder="yourname@domain.com" />
+				<p Class="Validation" id="valValidemailID">Enter Valid EmailID</p>
+				<p Class="Validation" id="valemailId">Select Email ID</p>
+				<br><br>
+
+
+				<label for="phoneNumber">Phone Number*:</label>
+				<input type="text" name="phoneNumber" id="phoneNumber" placeholder="xxx-xxx-xxxx" />
+				<p Class="Validation" id="valphoneNumber">Select Phone Number</p>
+				<p Class="Validation" id="valValidphoneNumber">Enter Valid Phone Number</p>
+				<br><br>
+
+				<label for="streetAddress1">Street Address 1*:</label>
+				<input type="text" name="streetAddress1" id="streetAddress1" placeholder="address" />
+				<p Class="Validation" id="valstreetAddress1">Select Street Address 1</p>
+				<br><br>
+
+				<label for="streetAddress2">Street Address 2:</label>
+				<input type="text" name="streetAddress2" id="streetAddress2" placeholder="address" />
+				<p Class="Validation" id="valstreetAddress2">Select Street Address 2</p>
+				<br><br>
+
+				<label for="city">City*:</label>
+				<input type="text" name="city" id="city" placeholder="city" />
+				<p Class="Validation" id="valcity">Select City</p>
+				<br><br>
+
+				<label for="state">State*:</label>
+				<input type="text" name="state" id="state" placeholder="state" />
+				<p Class="Validation" id="valstate">Select State</p>
+				<br><br>
+
+				<label for="zipcode">ZipCode*:</label>
+				<input type="text" name="zipcode" id="zipcode" placeholder="xxxxxx" />
+				<p Class="Validation" id="valzipcode">Select zipcode</p>
+				<p Class="Validation" id="valValizipcode">Enter Valid zip Code</p>
+				<br><br>
+
+				<label for="HowDidYouHear">How did you hear*:</label>
+				<input type='checkbox' name="source" value="facebook" /> Facebook
+				<input type='checkbox' name="source" value="google" /> Google
+				<input type='checkbox' name="source" value="yelp" /> Yelp
+				<p Class="Validation" id="valsource">Please select field</p>
+				<br><br>
+
+				<label for="drinks">Drinks*:</label>
+				<select name="selc_drinks" id="selc_drinks">
+					<option value="Coffee">Coffee</option>
+					<option value="Tea">Tea</option>
+					<option value="Juice">Juice</option>
+					<option value="SoftDrink">SoftDrink</option>
+				</select>
+				<p Class="Validation" id="valdrink">Please select field</p>
+				<br><br>
+
+				<label for="comments">Comments*:</label>
+				<textarea name="text" id="comments" placeholder="Your comments" rows="5" cols="25"></textarea>
+				<p Class="Validation" id="valcomments">Enter comments</p>
+				<br><br>
+				<input id="submitBtn" type="Submit" onclick="validate()">
+				<input type="Reset">
+				<br><br>
+			</form>
+		</main>
+	</div>
+	<div id="div_myTable" style="margin: 20px;display: none;">
+		<table id="myTable" style="width:100%;">
+			<tr>
+				<th>Title</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email ID</th>
+				<th>Phone Number</th>
+				<th>Street Address1</th>
+				<th>Street Address2</th>
+				<th>City</th>
+				<th>State</th>
+				<th>ZipCode</th>
+				<th>How Did You hear</th>
+				<th>Drinks</th>
+				<th>Comment</th>
+			</tr>
+			<!-- <tr>
+				<td>Alfreds Futterkiste</td>
+				<td>Maria Anders</td>
+				<td>Germany</td>
+				<td>Germany</td>
+				<td>Germany</td>
+				<td>Germany</td>
+				<td>Germany</td>
+				<td>Germany</td>
+				<td>Germany</td>
+				<td>Germany</td>
+				<td>Germany</td>
+				<td>Germany</td>
+				<td>Germany</td>
+			</tr> -->
+		</table>
+	</div>
+
+	<script>
+
+		//const log = document.getElementById('phoneNumber');
+		var log = document.getElementById('phoneNumber');
+		var event_PhoneNumber = document.getElementById('emailId');
+		var event_ZipCode = document.getElementById('zipcode');
+		var event_drinks = document.getElementById('selc_drinks');
+		var checkBox_Add = document.getElementById('valdrink');
+
+		//var event_DrinkChkbxSelect = document.getElementById('checkBoxDrinks');
+		//checkBoxDrinks
+
+
+
+		log.addEventListener('change', phonenumber);
+		event_PhoneNumber.addEventListener('change', ValidateEmail);
+		event_ZipCode.addEventListener('change', isUSAZipCode);
+		event_drinks.addEventListener('change', drinksAdd);
+		//event_DrinkChkbxSelect.addEventListener('change',addDrinkComment);
+
+
+		function phonenumber(e) {
+			var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+			if (!(log.value.match(phoneno))) {
+				//valValidphoneNumber
+				document.getElementById("valValidphoneNumber").style.display = "unset"
+				document.getElementById("submitBtn").disabled = false;
+				//return true;
+			} else {
+				document.getElementById("valValidphoneNumber").style.display = "none"
+				document.getElementById("submitBtn").disabled = true;
+			}
+		}
+
+		function ValidateEmail(e) {
+			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(event_PhoneNumber.value)) {
+				document.getElementById("valValidemailID").style.display = "none"
+				document.getElementById("submitBtn").disabled = false;
+				//return (true)
+			}
+			else {
+				document.getElementById("valValidemailID").style.display = "unset"
+				document.getElementById("submitBtn").disabled = true;
+			}
+			//alert("You have entered an invalid email address!")
+			//return (false)
+		}
+
+		function isUSAZipCode(e) {
+			if (/^\d{5}(-\d{4})?$/.test(event_ZipCode.value)) {
+				document.getElementById("valValizipcode").style.display = "none"
+				document.getElementById("submitBtn").disabled = false;
+
+			} else {
+				document.getElementById("valValizipcode").style.display = "unset"
+				document.getElementById("submitBtn").disabled = true;
+			}
+		}
+
+		function drinksAdd(e) {
+			//alert(this.value);
+			var selectedDocuments = document.getElementsByClassName("div_Drinks");
+			// var selectedDocuments = document.getElementById("div_Drinks");	
+			// if(selectedDocuments!=null)	{
+			// 	selectedDocuments.remove();
+			// }
+
+			if (selectedDocuments.length > 0) {
+				selectedDocuments[0].remove();
+				selectedDocuments[0].remove();
+				selectedDocuments[0].remove();
+				selectedDocuments[0].remove();
+			}
+			//checkBox_Add.insertAdjacentHTML("afterend","");
+			//var checkBx_drink = `<div style="margin-top: 20px" id="div_Drinks"><label for='checkBoxDrinks'>`+this.value +`*:</label><input type='checkbox' name="drinks" value="`+this.value+`" /></div>`
+			var checkBx_drink = `<br class="div_Drinks"><br class="div_Drinks"><label for='checkBoxDrinks' class='div_Drinks'>` + this.value + `*:</label><input onClick="addDrinkComment(this)" id="checkBoxDrinks"class="div_Drinks" type='checkbox' name="drinks" value="` + this.value + `" />`
+			checkBox_Add.insertAdjacentHTML("afterend", checkBx_drink);
+		}
+
+		function addDrinkComment(test) {
+
+			if (test.checked) {
+				var event_DrinkChkbxSelect = document.getElementById('checkBoxDrinks');
+				var checkBx_drink = `<br class="div_DrinksComments"><br class="div_DrinksComments"><label for='checkBoxDrinks' class='div_DrinksComments'>Any Additional customisations*:</label><textarea class="div_DrinksComments" name="text" id="commentsforDrinks" placeholder="Your comments" rows="5" cols="25"></textarea>`
+				event_DrinkChkbxSelect.insertAdjacentHTML("afterend", checkBx_drink);
+			}
+			else {
+				var selectedDocuments = document.getElementsByClassName("div_DrinksComments");
+				if (selectedDocuments.length > 0) {
+					selectedDocuments[0].remove();
+					selectedDocuments[0].remove();
+					selectedDocuments[0].remove();
+					selectedDocuments[0].remove();
+				}
+
+			}
+
+		}
+
+		function validate() {
+
+			//alert("OnClick");
+			document.getElementsByTagName("input")
+			var inpCol = document.getElementsByTagName("input")
+			var checkedRadio = false;
+
+			var isValid = true;
+			const isValidArray = [];
+
+			for (let index = 0; index < inpCol.length - 1; ++index) {
+				console.log(inpCol[index].type);
+
+				switch (inpCol[index].type) {
+					case "radio":
+						if ((!inpCol[index].checked)&&(!checkedRadio)) {
+							isValid = false
+							break;
+						}
+						else{
+							checkedRadio = true;							
+							break;
+						}
+					case "text":
+						if (inpCol[index].value == '') {
+							isValid = false
+							break;
+						}
+					case "checkbox":
+						if (inpCol[index].checked) {
+							isValid = false
+							break;
+						}
+				}
+
+
+				if (!isValid) {
+					isValidArray[index] = "val" + inpCol[index].name;
+				}
+				isValid = true;
+			}
+
+			for (let index = 0; index < isValidArray.length ; ++index) {
+
+				if (isValidArray[index] != null) {
+					document.getElementById(isValidArray[index]).style.display = "unset"
+				}
+
+			}
+
+			// if(isValidArray.length > 0){
+			if (true) {
+				//tableShow();
+				document.getElementById("div_myTable").style.display = "unset"
+				var getTable = document.getElementById("myTable")
+				var T =  document.getElementById("selc_drinks");
+				var orderDetails = `<tr>
+			  <td>`+ document.querySelector('input[name="title"]:checked').value + `</td>
+			  <td>`+ document.getElementById("firstName").value + `</td>
+			  <td>`+ document.getElementById("lastName").value + `</td>
+			  <td>`+ document.getElementById("emailId").value + `</td>
+			  <td>`+ document.getElementById("phoneNumber").value + `</td>
+			  <td>`+ document.getElementById("streetAddress1").value + `</td>
+			  <td>`+ document.getElementById("streetAddress2").value + `</td>
+			  <td>`+ document.getElementById("city").value + `</td>
+			  <td>`+ document.getElementById("state").value + `</td>
+			  <td>`+ document.getElementById("zipcode").value + `</td>
+			  <td>`+ document.getElementById("zipcode").value + `</td>
+			  <td>`+ T.options[T.selectedIndex].value + `</td>	
+			  <td>`+ document.getElementById("comments").value + `</td>		  
+			</tr>`
+
+				//getTable.childNodes[0].insertAdjacentHTML("afterend",orderDetails);
+				var rowAdd = getTable.insertRow(1);
+				//rowAdd.innerHTML = orderDetails;
+				getTable.rows[1].innerHTML = orderDetails;
+				//rowAdd.append(rowAdd);
+
+
+			}
+
+
+		}
+
+		function tableShow() {
+
+			var getTable = document.getElementById("myTable")
+			var orderDetails = `<tr>
+			  <td>`+ document.getElementsByName("title").value + `</td>
+			  <td>`+ document.getElementById("firstName").value + `</td>
+			  <td>`+ document.getElementById("lastName").value + `</td>
+			  <td>`+ document.getElementById("emailId").value + `</td>
+			  <td>`+ document.getElementById("phoneNumber").value + `</td>
+			  <td>`+ document.getElementById("streetAddress1").value + `</td>
+			  <td>`+ document.getElementById("streetAddress2").value + `</td>
+			  <td>`+ document.getElementById("city").value + `</td>
+			  <td>`+ document.getElementById("state").value + `</td>
+			  <td>`+ document.getElementById("firstName").value + `</td>
+			  <td>`+ document.getElementById("zipcode").value + `</td>
+			  <td>`+ document.getElementById("event_drinks").value + `</td>	
+			  <td>`+ document.getElementById("firstName").value + `</td>		  
+			</tr>`
+
+			getTable.childNodes[0].insertAdjacentHTML("afterend",);
+
+
+		}
+	</script>
+
+</body>
+
+</html>
