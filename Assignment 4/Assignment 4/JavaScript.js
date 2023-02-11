@@ -38,7 +38,7 @@
 
     function ValidateEmail(e) {
         //if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(event_EmailID.value)) {		
-        if (/@northeastern.com\s*$/.test(event_EmailID.value)) {
+        if (/@northeastern.edu\s*$/.test(event_EmailID.value)) {
             document.getElementById("valValidemailID").style.display = "none"
             document.getElementById("submitBtn").disabled = false;
             //return (true)
@@ -92,7 +92,7 @@
         if (this.value != "default") {
             //checkBox_Add.insertAdjacentHTML("afterend","");
             //var checkBx_drink = `<div style="margin-top: 20px" id="div_Drinks"><label for='checkBoxDrinks'>`+this.value +`*:</label><input type='checkbox' name="drinks" value="`+this.value+`" /></div>`
-            var checkBx_drink = `<br class="div_Drinks"><br class="div_Drinks"><label for='checkBoxDrinks' class='div_Drinks'>` + this.value + `:</label><input onClick="addDrinkComment(this)" id="checkBoxDrinks"class="div_Drinks" type='checkbox' name="drinks" value="` + this.value + `" />`
+            var checkBx_drink = `<br class="div_Drinks"><br class="div_Drinks"><label for='checkBoxDrinks' class='div_Drinks'> Special ` + this.value + `:</label><input onClick="addDrinkComment(this)" id="checkBoxDrinks"class="div_Drinks" type='checkbox' name="drinks" value="` + this.value + `" />`
             checkBox_Add.insertAdjacentHTML("afterend", checkBx_drink);
 
         }
@@ -403,6 +403,7 @@
 
     }
 
+    //Not req function
     function clearValid(){
         document.getElementsByTagName("input")
         var inpCol = document.getElementsByTagName("input")
