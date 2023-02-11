@@ -36,15 +36,15 @@
 </head>
 
 <body>
-	<div id="container">
+	<div id="container" >
 
 		<main>
 			<h2>Feeback</h2>
 			<h3>Love something? Hate something? Let us know!</h3>
 			Note : Fields marked with an asterisk(*) are mandatory
 			<br><br>
-			<!-- <form method="post" onsubmit="return false" novalidate> -->
-			<form method="post" novalidate></form>
+			<!-- <form method="post" onsubmit="return true" novalidate> -->
+			<form novalidate id="form"></form>
 			<label>Title*:</label>
 			<input type="radio" name="title" id="miss" value="miss" required="required" />Miss
 			<input type="radio" name="title" id="mr" value="mr" required="required" />Mr.
@@ -112,14 +112,14 @@
 			<br><br>
 
 			<label for="drinks">Drinks*:</label>
-			<select name="selc_drinks" id="selc_drinks">
+			<select name="drinks" id="selc_drinks">
 				<option value="default">---</option>
 				<option value="Coffee">Coffee</option>
 				<option value="Tea">Tea</option>
 				<option value="Juice">Juice</option>
 				<option value="SoftDrink">SoftDrink</option>
 			</select>
-			<p Class="Validation" id="valdrink">Please select field</p>
+			<p Class="Validation" id="valdrinks">Please select field</p>
 			<br><br>
 
 			<label for="comments">Comments*:</label>
@@ -153,295 +153,7 @@
 		</table>
 	</div>
 
-	<script>
-
-		//const log = document.getElementById('phoneNumber');
-		var log = document.getElementById('phoneNumber');
-		var event_EmailID = document.getElementById('emailId');
-		var event_ZipCode = document.getElementById('zipcode');
-		var event_drinks = document.getElementById('selc_drinks');
-		var checkBox_Add = document.getElementById('valdrink');
-		//var chks = document.getElementsByName("source");
-		const selected = new Array();
-		var selectedSource = "";
-		var additionalComments = "N/A";
-		//const input = document.querySelector('input');
-		//var event_DrinkChkbxSelect = document.getElementById('checkBoxDrinks');
-		//checkBoxDrinks
-
-
-
-		log.addEventListener('change', phonenumber);
-		//log.addEventListener('keypress', phonenumber);
-		//event_PhoneNumber.addEventListener('change', ValidateEmail);
-		event_EmailID.addEventListener('change', ValidateEmail);
-		event_ZipCode.addEventListener('change', isUSAZipCode);
-		event_drinks.addEventListener('change', drinksAdd);
-		//chks.addEventListener('change', selectedCkhs())
-
-		//event_DrinkChkbxSelect.addEventListener('change',addDrinkComment);
-
-
-		function phonenumber(e) {
-			var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-			if (!(log.value.match(phoneno))) {
-				//valValidphoneNumber
-				document.getElementById("valValidphoneNumber").style.display = "unset"
-				document.getElementById("valphoneNumber").style.display = "none"
-				document.getElementById("submitBtn").disabled = true;
-				//return true;
-			} else {
-				document.getElementById("valValidphoneNumber").style.display = "none"
-				document.getElementById("submitBtn").disabled = false;
-			}
-		}
-
-		function ValidateEmail(e) {
-			//if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(event_EmailID.value)) {		
-			if (/@northeastern.com\s*$/.test(event_EmailID.value)) {
-				document.getElementById("valValidemailID").style.display = "none"
-				document.getElementById("submitBtn").disabled = false;
-				//return (true)
-			}
-			else {
-				document.getElementById("valValidemailID").style.display = "unset"
-				document.getElementById("valemailId").style.display = "none"
-				document.getElementById("submitBtn").disabled = true;
-			}
-			//alert("You have entered an invalid email address!")
-			//return (false)
-		}
-
-		function isUSAZipCode(e) {
-			if (/^\d{5}(-\d{4})?$/.test(event_ZipCode.value)) {
-				document.getElementById("valValizipcode").style.display = "none"
-				document.getElementById("submitBtn").disabled = false;
-
-			} else {
-				document.getElementById("valValizipcode").style.display = "unset"
-				document.getElementById("valzipcode").style.display = "none"
-				document.getElementById("submitBtn").disabled = true;
-			}
-		}
-
-		function drinksAdd(e) {
-			//alert(this.value);
-			var selectedDocuments = document.getElementsByClassName("div_Drinks");
-			// var selectedDocuments = document.getElementById("div_Drinks");	
-			// if(selectedDocuments!=null)	{
-			// 	selectedDocuments.remove();
-			// }
-
-			if (selectedDocuments.length > 0) {
-				selectedDocuments[0].remove();
-				selectedDocuments[0].remove();
-				selectedDocuments[0].remove();
-				selectedDocuments[0].remove();
-			}
-			//checkBox_Add.insertAdjacentHTML("afterend","");
-			//var checkBx_drink = `<div style="margin-top: 20px" id="div_Drinks"><label for='checkBoxDrinks'>`+this.value +`*:</label><input type='checkbox' name="drinks" value="`+this.value+`" /></div>`
-			var checkBx_drink = `<br class="div_Drinks"><br class="div_Drinks"><label for='checkBoxDrinks' class='div_Drinks'>` + this.value + `:</label><input onClick="addDrinkComment(this)" id="checkBoxDrinks"class="div_Drinks" type='checkbox' name="drinks" value="` + this.value + `" />`
-			checkBox_Add.insertAdjacentHTML("afterend", checkBx_drink);
-		}
-
-		function addDrinkComment(test) {
-
-			if (test.checked) {
-				var event_DrinkChkbxSelect = document.getElementById('checkBoxDrinks');
-				var checkBx_drink = `<br class="div_DrinksComments"><br class="div_DrinksComments"><label for='checkBoxDrinks' class='div_DrinksComments'>Any Additional customisations*:</label><textarea class="div_DrinksComments" name="textAdditonalComments" id="commentsforDrinks" placeholder="Your comments" rows="5" cols="25"></textarea><p Class="Validation" id="valtextAdditonalComments">Enter comments</p>`
-				event_DrinkChkbxSelect.insertAdjacentHTML("afterend", checkBx_drink);
-			}
-			else {
-				var selectedDocuments = document.getElementsByClassName("div_DrinksComments");
-				if (selectedDocuments.length > 0) {
-					selectedDocuments[0].remove();
-					selectedDocuments[0].remove();
-					selectedDocuments[0].remove();
-					selectedDocuments[0].remove();
-				}
-				document.getElementById("valtextAdditonalComments").style.display = "none"
-				additionalComments = "N/A";
-			}
-
-		}
-
-		function validate() {
-
-			//alert("OnClick");
-			document.getElementsByTagName("input")
-			var inpCol = document.getElementsByTagName("input")
-			var txtArea = document.getElementsByTagName("textarea")
-			var checkedRadio = false;
-			var checkedBox = false;
-
-			var isValid = true;
-			const isValidArray = [];
-
-			var validationTags = document.getElementsByClassName("Validation")
-			for (let i = 0; i < validationTags.length; i++) {
-				validationTags[i].style.display = "none"
-
-			}
-
-			for (let index = 0; index < inpCol.length - 1; ++index) {
-				console.log(inpCol[index].type);
-
-				switch (inpCol[index].type) {
-					case "radio":
-						if ((!inpCol[index].checked) && (!checkedRadio)) {
-							isValid = false
-							break;
-						}
-						else {
-							checkedRadio = true;
-							break;
-						}
-					case "text":
-						if (inpCol[index].value == '') {
-							isValid = false
-							break;
-						}
-					case "checkbox":
-						if ((!inpCol[index].checked) && (!checkedRadio)) {
-							isValid = false
-							break;
-						} else {
-							checkedRadio = true;
-							break;
-						}
-				}
-
-
-				if (!isValid) {
-					isValidArray[index] = "val" + inpCol[index].name;
-				}
-				isValid = true;
-			}
-
-			for (let index = 0; index < txtArea.length; index++) {
-
-				if (txtArea[index].value == '') {
-					isValidArray.push("val" + txtArea[index].name)
-				}
-			}
-
-
-
-			for (let index = 0; index < isValidArray.length; ++index) {
-
-				if (isValidArray[index] != null) {
-					document.getElementById(isValidArray[index]).style.display = "unset"
-				}
-
-			}
-			var T = document.getElementById("selc_drinks");
-
-			if (T.options[T.selectedIndex].value == "---") {
-
-				isValidArray.push("val" + txtArea[index].name)
-			}
-
-			// if(isValidArray.length > 0){
-			if (isValidArray.length == 0) {
-				//tableShow();
-
-				document.getElementById("div_myTable").style.display = "unset"
-				var getTable = document.getElementById("myTable")
-
-				additionalComments = "N/A";
-				if (document.getElementById("checkBoxDrinks").checked == true) {
-					if (document.getElementById("commentsforDrinks").value != null) {
-						additionalComments = document.getElementById("commentsforDrinks").value;
-					}
-				}
-				else {
-					additionalComments = 'N/A';
-				}
-
-
-
-				var orderDetails = `<tr>
-			  <td>`+ document.querySelector('input[name="title"]:checked').value + `</td>
-			  <td>`+ document.getElementById("firstName").value + `</td>
-			  <td>`+ document.getElementById("lastName").value + `</td>
-			  <td>`+ document.getElementById("emailId").value + `</td>
-			  <td>`+ document.getElementById("phoneNumber").value + `</td>
-			  <td>`+ document.getElementById("streetAddress1").value + `</td>
-			  <td>`+ document.getElementById("streetAddress2").value + `</td>
-			  <td>`+ document.getElementById("city").value + `</td>
-			  <td>`+ document.getElementById("state").value + `</td>
-			  <td>`+ document.getElementById("zipcode").value + `</td>
-			  <td>`+ selectedSource + `</td>
-			  <td>`+ T.options[T.selectedIndex].value + `</td>
-			  <td>` + additionalComments + `</td>	
-			  <td>` + document.getElementById("comments").value + `</td>		  
-			</tr>`
-
-				//getTable.childNodes[0].insertAdjacentHTML("afterend",orderDetails);
-				var rowAdd = getTable.insertRow(1);
-				//rowAdd.innerHTML = orderDetails;
-				getTable.rows[1].innerHTML = orderDetails;
-				//rowAdd.append(rowAdd);
-
-
-			}
-
-
-		}
-
-		function selectedCkhs(e) {
-			selectedSource = "";
-			if (e.checked) {
-				//selected = selected + e.value + ","
-				selected.push(e.value);
-			} else {
-				var index = selected.indexOf(e.value);
-				if (index > -1) {
-					selected.splice(index, 1);
-				}
-			}
-			selected.forEach(element => {
-				selectedSource = selectedSource + element + ","
-			});
-
-
-
-		}
-
-		function tableShow() {
-
-			var getTable = document.getElementById("myTable")
-			var orderDetails = `<tr>
-			  <td>`+ document.getElementsByName("title").value + `</td>
-			  <td>`+ document.getElementById("firstName").value + `</td>
-			  <td>`+ document.getElementById("lastName").value + `</td>
-			  <td>`+ document.getElementById("emailId").value + `</td>
-			  <td>`+ document.getElementById("phoneNumber").value + `</td>
-			  <td>`+ document.getElementById("streetAddress1").value + `</td>
-			  <td>`+ document.getElementById("streetAddress2").value + `</td>
-			  <td>`+ document.getElementById("city").value + `</td>
-			  <td>`+ document.getElementById("state").value + `</td>
-			  <td>`+ document.getElementById("firstName").value + `</td>
-			  <td>`+ document.getElementById("zipcode").value + `</td>
-			  <td>`+ document.getElementById("event_drinks").value + `</td>	
-			  <td>`+ document.getElementById("firstName").value + `</td>		  
-			</tr>`
-
-			getTable.childNodes[0].insertAdjacentHTML("afterend",);
-
-
-		}
-
-		function reset() {
-			// var getTable = document.getElementById("myTable")			
-			// getTable.getElementsByTagName("tr")[1].remove();
-			// document.getElementById("div_myTable").style.display = "none"
-
-			onclick = "reset()";
-
-			//document.getElementById("div_myTable").style.display = "none"
-
-		}
+	<script src="JavaScript.js">
 	</script>
 
 </body>
