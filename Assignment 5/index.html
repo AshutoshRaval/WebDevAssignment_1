@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#registration-form").submit(function (event) {
+                event.preventDefault();
+                var email = $("#email").val();
+                var username = $("#username").val();
+                var password = $("#password").val();
+
+                var emailRegex = /^[a-zA-Z0-9._-]+@(neu\.edu|northeastern\.edu)$/;
+                var usernameRegex = /^[a-zA-Z0-9_]*$/;
+                var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+                var valid = true;
+                var errorMsg = "";
+
+                if (email == "") {
+                    // errorMsg += "Email is required.<br>";
+                    errorMsg += "Email is required.\n";
+                    valid = false;
+                }
+                else if (!emailRegex.test(email)) {
+                    // errorMsg += "Invalid email format. Only northeastern email ids are allowed.<br>";
+                    errorMsg += "Invalid email format. Only northeastern email ids are allowed.\n";
+                    valid = false;
+                }
+
+                if (username == "") {
+                    // errorMsg += "Username is required.<br>";
+                    errorMsg += "Username is required.\n";
+                    valid = false;
+                }
+                else if (!usernameRegex.test(username)) {
+                    // errorMsg += "Username should only contain alphanumeric characters and underscores.<br>";
+                    errorMsg += "Username should only contain alphanumeric characters and underscores.\n";
+                    valid = false;
+                }
+
+                if (password == "") {
+                    errorMsg += "Password is required.<br>";
+                    errorMsg += "Password is required.\n";
+                    valid = false;
+                }
+                else if (!passwordRegex.test(password)) {
+                    // errorMsg += "Password should be at least 8 characters long and should contain at least one uppercase letter, one lowercase letter, and one number.<br>";
+                    errorMsg += "Password should be at least 8 characters long and should contain at least one uppercase letter, one lowercase letter, and one number.\n";
+                    valid = false;
+                }
+
+                if (valid) {
+                    // Store the username in a session cookie
+                    sessionStorage.setItem("username", username);
+                    // Redirect to the second page
+                    window.location.href = "/calculator.html";
+                }
+                else {
+                    $("#error-msg").html(errorMsg);
+                    alert(errorMsg);
+                }
+            });
+        });
+    </script>
+    <style>
+        input {
+            margin-top: 2%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="margin-left: 45%;"> Welcome </h1>
+    <fieldset style="width: 50%;margin: auto;">
+        <legend>
+            Registration Form
+        </legend>
+        <form id="registration-form">
+            <label>Email:</label>
+            <input type="text" id="email" name="email" style="margin-left: 4.5%;"><br>
+
+            <label>Username:</label>
+            <input type="text" id="username" name="username"><br>
+
+            <label>Password:</label>
+            <input type="password" id="password" name="password" style="margin-left: 0.5%;"><br>
+
+            <input type="submit" value="Register">
+        </form>
+    </fieldset>
+    <!-- <h1>Registration Form</h1> -->
+    <!-- <form id="registration-form">
+		<label>Email:</label>
+		<input type="text" id="email" name="email"><br>
+
+		<label>Username:</label>
+		<input type="text" id="username" name="username"><br>
+
+		<label>Password:</label>
+		<input type="password" id="password" name="password"><br>
+
+		<input type="submit" value="Register">
+	</form> -->
+    <div id="error-msg"></div>
+</body>
+
+</html>

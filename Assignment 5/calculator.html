@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome Page</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<style>
+        input, button {
+            margin-top: 2%;
+        }
+    </style>
+</head>
+<body>
+	<h1>Welcome, <span id="username"></span>!</h1>
+	<script>		
+		// Retrieve the username from the session cookie
+		
+		// var username = sessionStorage.getItem("username");
+		// if(username){
+		// 	// Display the username on the page
+		// 	$("#username").text(username);
+		// 	// Remove the session cookie
+		// 	sessionStorage.removeItem("username");
+		// }
+		// else{
+		// 	// Redirect to the registration form if the username is not found
+		// 	window.location.href = "\caclulator.html";
+		// }
+
+		window.addEventListener("load", function(){
+			var firstNumInput = document.getElementById("first-num");
+			var secondNumInput = document.getElementById("second-num");
+			var addBtn = document.getElementById("add-btn");
+			var subtractBtn = document.getElementById("subtract-btn");
+			var multiplyBtn = document.getElementById("multiply-btn");
+			var divideBtn = document.getElementById("divide-btn");
+			var resultLabel = document.getElementById("result");
+
+			function validateInput(input){
+				if(isNaN(input)){
+					alert("Please enter a valid number.");
+					return false;
+				}
+				return true;
+			}
+
+			function performOperation(operation){
+				var firstNum = parseFloat(firstNumInput.value);
+				var secondNum = parseFloat(secondNumInput.value);
+				if(!validateInput(firstNum) || !validateInput(secondNum)){
+					return;
+				}
+
+				var operationFunction = (a, b) => {
+					switch(operation){
+						case "add":
+							return a + b;
+						case "subtract":
+							return a - b;
+						case "multiply":
+							return a * b;
+						case "divide":
+							if(b == 0){
+								alert("Cannot divide by zero.");
+								return NaN;
+							}
+							return a / b;
+						default:
+							return NaN;
+					}
+				}
+
+				var result = operationFunction(firstNum, secondNum);
+				if(!isNaN(result)){
+					resultLabel.innerText = result;
+				}
+			}
+
+			addBtn.addEventListener("click", function(){
+				performOperation("add");
+			});
+
+			subtractBtn.addEventListener("click", function(){
+				performOperation("subtract");
+			});
+
+			multiplyBtn.addEventListener("click", function(){
+				performOperation("multiply");
+			});
+
+			divideBtn.addEventListener("click", function(){
+				performOperation("divide");
+			});
+
+			firstNumInput.addEventListener("input", function(){
+				resultLabel.innerText = "";
+			});
+
+			secondNumInput.addEventListener("input", function(){
+				resultLabel.innerText = "";
+			});
+		});
+		
+	</script>
+
+<h1>Calculator</h1>
+<div style="width: 30%;border: 2px solid black; padding: 10px;">
+<label id="result" style="display: block;"></label>
+<label>First Number:</label>
+<input type="text" id="first-num"><br>
+
+<label>Second Number:</label>
+<input type="text" id="second-num"><br>
+
+<button type="button" id="add-btn">Add</button>
+<button type="button" id="subtract-btn">Subtract</button>
+<button type="button" id="multiply-btn">Multiply</button>
+<button type="button" id="divide-btn">Divide</button><br>
+
+<!-- <label>Result:</label> -->
+
+</div>
+
+<!-- <input type="text" id="result" readonly> -->
+</body>
+</html>
