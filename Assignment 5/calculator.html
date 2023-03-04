@@ -7,6 +7,24 @@
         input, button {
             margin-top: 2%;
         }
+		
+		.button {
+        background-color: black;
+        color: white;
+        width: 65px;
+        height: 20px;
+        /* border-radius: 23px; */
+    }
+
+    .button:hover {
+        background-color: #737873
+    }
+
+    .button:active {
+        background-color: #343934;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
     </style>
 </head>
 <body>
@@ -33,6 +51,7 @@
 			var subtractBtn = document.getElementById("subtract-btn");
 			var multiplyBtn = document.getElementById("multiply-btn");
 			var divideBtn = document.getElementById("divide-btn");
+			var resetBtn = document.getElementById("reset-btn")
 			var resultLabel = document.getElementById("result");
 
 			function validateInput(input){
@@ -98,6 +117,18 @@
 			secondNumInput.addEventListener("input", function(){
 				resultLabel.innerText = "";
 			});
+
+			resetBtn.addEventListener("click",function(){
+				// alert("Hello")
+				resultLabel.innerText="";
+				firstNumInput.value=null;
+				secondNumInput.value=null;
+
+			});
+
+			function Reset(){
+				alert("hello")
+			}
 		});
 		
 	</script>
@@ -106,15 +137,16 @@
 <div style="width: 30%;border: 2px solid black; padding: 10px; background-color: grey;">
 <label id="result" style="display: block;border: 2px solid black; padding: 10px;background-color: aquamarine;color: black; height: 15px;"></label>
 <label style="color: white;" >First Number:</label>
-<input type="text" id="first-num"><br>
+<input type="text" id="first-num" style="margin-left: 18px;"><br>
 
 <label style="color: white;">Second Number:</label>
 <input type="text" id="second-num"><br>
 <div>
-	<button type="button" id="add-btn">Add</button>
-	<button type="button" id="subtract-btn">Subtract</button>
-	<button type="button" id="multiply-btn">Multiply</button>
-	<button type="button" id="divide-btn">Divide</button><br>
+	<button class="button" type="button" id="add-btn">Add</button>
+	<button class="button" type="button" id="subtract-btn">Subtract</button>
+	<button class="button" type="button" id="multiply-btn">Multiply</button>
+	<button class="button" type="button" id="divide-btn">Divide</button>
+	<button class="button" type="button" id="reset-btn" >Reset</button><br>
 </div>
 
 

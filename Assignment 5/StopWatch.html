@@ -30,6 +30,7 @@
         width: 180px;
         margin: auto;
         font-size: x-large;
+        border: 2px solid white;
 
     }
    
@@ -44,8 +45,11 @@
             <!-- <p id="timeDisplay"
                 style="background-color: aquamarine;text-align: center; height: 30px;width: 180px;margin: auto;font-size: x-large;">
                 00:00.00</p> -->
-                <p id="timeDisplay">
-                00:00:00</p>
+                <p id="timeDisplay">00:00:00</p>
+                <!-- <label id="timeDisplay">
+                    00:00:00 
+                </label> -->
+                <!-- 00:00:00</p> -->
         </div>
 
         <button id="startButton" style="margin-left: 11%;" class="button">Start</button>
@@ -93,7 +97,7 @@
                     resolve();
                 }, 1000);
             });
-            //console.log()
+            //console.log("promis.resolve()")
             return promise;
         }
 
