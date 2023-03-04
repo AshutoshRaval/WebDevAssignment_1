@@ -13,18 +13,18 @@
 	<h1>Welcome, <span id="username"></span>!</h1>
 	<script>		
 		// Retrieve the username from the session cookie
-		
-		// var username = sessionStorage.getItem("username");
-		// if(username){
-		// 	// Display the username on the page
-		// 	$("#username").text(username);
-		// 	// Remove the session cookie
-		// 	sessionStorage.removeItem("username");
-		// }
-		// else{
-		// 	// Redirect to the registration form if the username is not found
-		// 	window.location.href = "\caclulator.html";
-		// }
+
+		var username = sessionStorage.getItem("username");
+		if(username){
+			// Display the username on the page
+			$("#username").text(username);
+			// Remove the session cookie
+			sessionStorage.removeItem("username");
+		}
+		else{
+			// Redirect to the registration form if the username is not found
+			window.location.href = "\caclulator.html";
+		}
 
 		window.addEventListener("load", function(){
 			var firstNumInput = document.getElementById("first-num");
@@ -103,18 +103,20 @@
 	</script>
 
 <h1>Calculator</h1>
-<div style="width: 30%;border: 2px solid black; padding: 10px;">
-<label id="result" style="display: block;"></label>
-<label>First Number:</label>
+<div style="width: 30%;border: 2px solid black; padding: 10px; background-color: grey;">
+<label id="result" style="display: block;border: 2px solid black; padding: 10px;background-color: aquamarine;color: black; height: 15px;"></label>
+<label style="color: white;" >First Number:</label>
 <input type="text" id="first-num"><br>
 
-<label>Second Number:</label>
+<label style="color: white;">Second Number:</label>
 <input type="text" id="second-num"><br>
+<div>
+	<button type="button" id="add-btn">Add</button>
+	<button type="button" id="subtract-btn">Subtract</button>
+	<button type="button" id="multiply-btn">Multiply</button>
+	<button type="button" id="divide-btn">Divide</button><br>
+</div>
 
-<button type="button" id="add-btn">Add</button>
-<button type="button" id="subtract-btn">Subtract</button>
-<button type="button" id="multiply-btn">Multiply</button>
-<button type="button" id="divide-btn">Divide</button><br>
 
 <!-- <label>Result:</label> -->
 

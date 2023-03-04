@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Time Display</title>
+
+</head>
+<style>
+    .button {
+        background-color: black;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 23px;
+    }
+
+    .button:hover {
+        background-color: #737873
+    }
+
+    .button:active {
+        background-color: #343934;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
+    #timeDisplay{
+        background-color: aquamarine;
+        text-align: center;
+        height: 30px;
+        width: 180px;
+        margin: auto;
+        font-size: x-large;
+
+    }
+   
+</style>
+
+<body>
+    <h1 style="text-align: center;">Timex Stopwatch</h1>
+    <div
+        style="border: 2px solid black;width: 20%;margin: auto;padding: 1%;height: 180px; background-color: rgb(128, 131, 134); border-radius: 50%;">
+        <!-- <label style="color: white;margin: auto;">Timex</label> -->
+        <div style="margin-bottom: 5%;margin-top: 40px;">
+            <!-- <p id="timeDisplay"
+                style="background-color: aquamarine;text-align: center; height: 30px;width: 180px;margin: auto;font-size: x-large;">
+                00:00.00</p> -->
+                <p id="timeDisplay">
+                00:00:00</p>
+        </div>
+
+        <button id="startButton" style="margin-left: 11%;" class="button">Start</button>
+        <button id="stopButton" class="button">Stop</button>
+        <button onclick="resetTimer()" class="button">Reset</button>
+    </div>
+    <!-- <h1>Stopwatch</h1>
+    <p id="timeDisplay">00:00.00</p>
+    <button id="startButton">Start</button>
+    <button id="stopButton">Stop</button>
+    <button onclick="resetTimer()">Reset</button> -->
+    <!-- <script src="stopwatch.js"></script> -->
+    <script>
+        const startButton = document.getElementById("startButton");
+        const stopButton = document.getElementById("stopButton");
+        const timeDisplay = document.getElementById("timeDisplay");
+
+        let startTime = 0;
+        let elapsedTime = 0;
+        var timerId = null;
+
+        let seconds = 0;
+        let minutes = 0;
+        let hours = 0;
+
+
+        function startTimer() {
+
+            stopButton.disabled = false;
+            startButton.disabled = true;
+
+            const promise = new Promise((resolve) => {
+                timerId = setInterval(() => {
+
+                    seconds++;
+                    let hours = Math.floor(seconds / 3600);
+                    let minutes = Math.floor((seconds - (hours * 3600)) / 60);
+                    let seconds1 = seconds % 60;
+
+                    disp_hours = (hours < 10) ? "0" + hours : hours;
+                    disp_minutes = (minutes < 10) ? "0" + minutes : minutes;
+                    disp_seconds = (seconds1 < 10) ? "0" + seconds1 : seconds1;
+                    timeDisplay.innerText = ""
+                    timeDisplay.innerText = disp_hours + ":" + disp_minutes + ":" + disp_seconds;
+                    resolve();
+                }, 1000);
+            });
+            //console.log()
+            return promise;
+        }
+
+        function stopTimer() {
+            clearInterval(timerId);
+            stopButton.disabled = true;
+            startButton.disabled = false;
+        }
+        startButton.addEventListener("click", async () => {
+            await startTimer();
+            // alert("hello")
+        });
+
+        stopButton.addEventListener("click", () => {
+            stopTimer();
+        });
+
+        function resetTimer() {
+            clearInterval(timerId);
+            document.getElementById("timeDisplay").innerHTML = "00:00:00";
+            stopButton.disabled = true;
+            startButton.disabled = false;
+            seconds = 0;
+        }
+
+    </script>
+</body>
+
+</html>
