@@ -1,0 +1,9 @@
+
+// @function chooseSize($size){   
+//      @return $size*5%;
+//     }
+
+@function chooseSize($size){
+
+    @return $size*2px;
+}

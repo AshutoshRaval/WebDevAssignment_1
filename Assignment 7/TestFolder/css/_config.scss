@@ -1,0 +1,39 @@
+// Mixin example
+// $fontType:'Brush Script MT', cursive;
+$primary-color: rgb(225, 21, 21) ;
+$fontType:'Brush Script MT', cursive;
+
+@mixin fontsPage{
+
+    font-family: $fontType;
+}
+
+@mixin logo_img {
+    height: 50px;
+    //  width: 10px;
+}
+
+//if else
+@function set-text-color($color){
+    @if(lightness($color) > 70){
+        @return black;
+    }
+    @else{
+        @return white;
+    }
+}
+//use ixin to set background and text color
+// @mixin set-background($color){
+//     background-color: $color;
+//     color: set-text-color($primary-color);
+
+// }
+
+@mixin set-background($color,$btn-bck-colr,$text-Colr){
+    // background-color: $color;
+    #{$btn-bck-colr}:$color;
+    // color: set-text-color($color);
+    #{$text-Colr}:set-text-color($color);
+    // color: set-text-color($color);
+
+}

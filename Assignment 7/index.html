@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Coffee Shop</title>
+    <!-- <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: lightyellow;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+            grid-gap: 10px;
+            padding: 20px;
+            width: 80%;
+            margin-left: 8%;
+            margin-right: 8%;
+        }
+
+        .item {
+            background-color: #f2f2f2;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* height: 50%; */
+        }
+
+        .item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #352d2f;
+        }
+
+        .logo {
+            flex: 1;
+        }
+
+        .logo img {
+            /* height: 50px; */
+            height: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: flex-end;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: #e67e22;
+        }
+
+        .page_Footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+        }
+
+        footer {
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            flex-basis: 100%;
+            text-align: left;
+        }
+
+        .footer-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .social-media {
+            list-style: none;
+            display: flex;
+            margin-right: 20px;
+        }
+
+        .social-media li {
+            margin-right: 10px;
+        }
+
+        .social-media a {
+            color: #000;
+        }
+
+        .social-media a:hover {
+            color: #007bff;
+        }
+
+        .footer-right p {
+            margin: 0;
+            font-size: 14px;
+        }
+    </style> -->
+    <link rel="stylesheet" href="Testfolder/css/style.css">
+    <script src="./scripts.js"></script>
+</head>
+
+<body>
+    <!-- <h1 style="font-family: 'Brush Script MT', cursive;">Welcome to My Coffee Shop!</h1> -->
+    <h1>Welcome to My Coffee Shop!</h1>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="image\CoffeeFavicon.png" alt="Coffee Logo"></a>
+                <!-- <div style="font-family: 'Brush Script MT', cursive; color: white;">Coffee Table</div> -->
+            </div>
+            <ul class="nav-links">
+                <li><a href="AboutUs.html">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Products</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="Coffe Types Iamge" style="margin-top: 2%;">
+        <img src="image\Coffee_Image.jpg" style="width:100%;"><img>
+
+    </section>
+    <section class="Coffe Types">
+        <div class="container">
+            <div class="item">
+                <img src="image\Coffe1.jpg" alt="Coffee 1">
+                <h2>Black</h2>
+                <p>Special Black beans</p>
+                <p>$3.50</p>
+                <button class="btn-Add">Add to Cart</button>
+            </div>
+            <div class="item">
+                <img src="image\Coffe2.jpg" alt="Coffee 2">
+                <h2>Latte</h2>
+                <p>Good blend fo mix</p>
+                <p>$4.00</p>
+                <button class="btn-Add">Add to Cart</button>
+            </div>
+            <div class="item">
+                <img src="image\Coffe3.jpg"" alt="Coffee 3">
+                <h2>Mocha</h2>
+                <p>Special Milk & Stuff</p>
+                <p>$5.00</p>
+                <button class="btn-Add">Add to Cart</button>
+            </div>
+            <div class="item">
+                <img src="image\Coffe2.jpg"" alt="Coffee 4">
+                <h2>Espresso</h2>
+                <p>Strong essence of flavor</p>
+                <p>$3.00</p>
+                <button class="btn-Add">Add to Cart</button>
+            </div>
+            <div class="item">
+                <img src="image\Coffe2.jpg" alt="Coffee 5">
+                <h2>Filter</h2>
+                <p>Processed coffee beans</p>
+                <p>$3.50</p>
+                <button class="btn-Add">Add to Cart</button>
+            </div>
+            <div class="item">
+                <img src="image\Coffe1.jpg" alt="Coffee 6">
+                <h2>India Special</h2>
+                <p>Imported beans form Inia</p>
+                <p>$4.50</p>
+                <button class="btn-Add">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="footer">
+        <footer>
+            <div class="Row">
+                <div class="Column"><a href="mailto:CoffeDay@CoffeDay.com" >CoffeDay@CoffeDay.com</a></div>
+                <div class="Column" style="padding-left: 172px;">Follow Us</div>
+                <div class="Column">Tarde Mark-Team Coffe Day</div>
+                <div><button onclick="darkTheme()" class="button" style="margin-left: 120px;">Switch Mode</button></div>
+            </div>
+        </footer>
+
+    </section>
+
+</body>
+
+</html>

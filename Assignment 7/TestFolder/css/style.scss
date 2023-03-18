@@ -1,0 +1,182 @@
+//$Background-colors: #ffffe0;
+@import '_config';
+@import '_theme';
+@import '_utilites';
+@import '_button';
+@import '_AboutUs';
+@import '_function';
+
+// $fontType:'Brush Script MT', cursive;
+body {
+    //--bck-color-body:white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    // background-color: $Background-colors;
+    background-color: var(--bck-color-body);
+}
+
+h1{    
+    @include fontsPage
+}
+// .container {
+//     display: grid;
+//     grid-template-columns: repeat(3, 1fr);
+//     grid-template-rows: auto;
+//     grid-gap: 10px;
+//     padding: 20px;
+//     width: 80%;
+//     margin-left: 8%;
+//     margin-right: 8%;
+// }
+
+.item {
+    // background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    // color:var(--bck-color-nav);
+    background-color:var(--bck-color-nav) ;
+    /* height: 50%; */
+    & img{
+        max-width: 100%;
+        height: auto;
+    }
+    // font-style: $fontType;
+    & h2{
+
+        font-family: $fontType;
+        color: var(--crd-fnt-color) ;
+        font-size: 30px;
+    }
+    & p{
+        color: var(--crd-fnt-color) ;
+    }
+    & button{
+        background-color: var(--bck-color-body);
+        color: var(--bck-color-nav);
+        //width: 100px;
+        width: chooseSize(50);
+        //height: 40px;
+        height: chooseSize(20);
+        border-radius: 5px;
+    }
+    
+
+}
+
+// .item img {
+//     max-width: 100%;
+//     height: auto;
+// }
+
+h1 {
+    text-align: center;
+    margin-top: 10px;
+    //color: var(--bck-color-body);
+    //color: #e67e22;
+    color: var(--bck-color-nav);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    // background-color: #352d2f;
+    background-color: var(--bck-color-nav);
+}
+
+
+.logo {
+    flex: 1;
+
+    & img {
+        // height: 100px;
+        @include logo_img
+    }
+}
+
+
+// .logo img {
+//     /* height: 50px; */
+//     height: 10px;
+// }
+
+// nesting example
+.nav-links {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    & li {
+        margin-left: 20px;
+    }
+
+    & a {
+        text-decoration: none;
+        // color: white;
+        color: var(--fnt-color-nav);
+        font-weight: bold;
+        text-transform: uppercase;
+        // font-family: $fontType;
+    }
+}
+
+// .nav-links li {
+//     margin-left: 20px;
+// }
+
+// .nav-links a {
+//     text-decoration: none;
+//     color: white;
+//     font-weight: bold;
+//     text-transform: uppercase;
+// }
+
+.nav-links a:hover {
+    color: #e67e22;
+}
+
+.page_Footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.Row {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 10px;
+    // background-color: #352d2f;
+    background-color: var(--bck-color-nav);
+
+}
+
+.page_Footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.Column {
+    display: table-cell;
+    //color: white;
+    color: var(--fnt-color-nav);
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    padding-left: 110px;
+    & a{
+        color: var(--fnt-color-nav);
+        // color: white;
+        //color: black;
+    }
+}
+
+
