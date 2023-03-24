@@ -17,7 +17,13 @@ const userSchema = new mongoose.Schema({
   fullName: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
+    validate:{
+      validator: (value) => {
+        return /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(value);
+      },
+      message: 'Invalid full name (no special charaters are allowed) '      
+    }
   },
   email: {
     type: String,
@@ -86,8 +92,9 @@ app.post('/user/create', async (req, res) => {
 //PUT
 app.put("/update/edit/:fullName1", async (req, res) => {
 
-  let upName = req.params.fullName1;
-  console.log(upName);
+  //let upName = req.params.fullName1;
+  let upEmail = req.params.fullName1;
+  console.log(upEmail);
   let upName_new = req.body.fullName;
   let upPassword_new = req.body.password;
   //let upemail_new = req.body.email;
@@ -107,7 +114,8 @@ app.put("/update/edit/:fullName1", async (req, res) => {
 
   // User.findOneAndUpdate({fullName:upName},{$set:{fullName:upName_new,email:upemail_new}})
 
-  const user = await User.findOne({ fullName: upName });
+  // const user = await User.findOne({ fullName: upName });
+  const user = await User.findOne({ email: upEmail });
   if (!user) {
     return res.status(404).json({ message: 'User not found' });
   } else {
@@ -177,6 +185,7 @@ app.get('/user/getAll', async (req, res) => {
       console.log(element.fullName);
       console.log(element.email)
       console.log(element.password)
+      console.log("--------------")
     });
   } catch (error) {
     console.error(error);
