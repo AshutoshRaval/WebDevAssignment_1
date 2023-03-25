@@ -18,11 +18,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    validate:{
+    validate: {
       validator: (value) => {
         return /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(value);
       },
-      message: 'Invalid full name (no special charaters are allowed) '      
+      message: 'Invalid full name (no special charaters are allowed) '
     }
   },
   email: {
@@ -65,35 +65,46 @@ app.post('/user/create', async (req, res) => {
 
   // Hash the password using bcrypt
   //   const hashedPassword = await bcrypt.hash(password, 10);
-  const hashedPassword = await bcrypt.hash(req.body.password, 10);
-  console.log(hashedPassword);
-  // Create new user
-  const user = new User({
-    fullName: req.body.fullName,
-    //fullName:'Ashutosh145',
-    email: req.body.email,
-    // email:'ashutosh120@gmail.com',
-    // password: hashedPassword
-    //password: req.body.password
-    password: hashedPassword
-    //password: 'Ashutosh123'
-  });
+  console.log(req.body.password);
+  const pass_Check = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#%$!&*()\-_])[a-zA-Z\d@#%$!&*()\-_]{8,}$/.test(req.body.password);
+  console.log(pass_Check);
+  if (!pass_Check) {
+    res.status(400).send("Please match the passowrd criteria");
 
-  try {
-    // Save user to the database
-    const val = await user.save();
-    // res.json(val);
-    res.status(201).send('User created');
-  } catch (error) {
-    res.status(400).send(error.message);
+  } else {
+
+
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    console.log(hashedPassword);
+    // Create new user
+    const user = new User({
+      fullName: req.body.fullName,
+      //fullName:'Ashutosh145',
+      email: req.body.email,
+      // email:'ashutosh120@gmail.com',
+      // password: hashedPassword
+      //password: req.body.password
+      password: hashedPassword
+      //password: 'Ashutosh123'
+    });
+
+    try {
+      // Save user to the database
+      const val = await user.save();
+      // res.json(val);
+      res.status(201).send('User created');
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
   }
 });
 
 //PUT
-app.put("/update/edit/:fullName1", async (req, res) => {
+//app.put("/update/edit/:fullName1", async (req, res) => {
 
+app.put("/update/edit/", async (req, res) => {
   //let upName = req.params.fullName1;
-  let upEmail = req.params.fullName1;
+  let upEmail = req.body.email;
   console.log(upEmail);
   let upName_new = req.body.fullName;
   let upPassword_new = req.body.password;
@@ -115,21 +126,29 @@ app.put("/update/edit/:fullName1", async (req, res) => {
   // User.findOneAndUpdate({fullName:upName},{$set:{fullName:upName_new,email:upemail_new}})
 
   // const user = await User.findOne({ fullName: upName });
-  const user = await User.findOne({ email: upEmail });
-  if (!user) {
-    return res.status(404).json({ message: 'User not found' });
+  // const pass_Check1 = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(upPassword_new);
+  const pass_Check1 = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#%$!&*()\-_])[a-zA-Z\d@#%$!&*()\-_]{8,}$/.test(upPassword_new);
+  console.log(pass_Check1)
+  if (!pass_Check1) {
+    return res.status(404).json({ message: 'Please match the passowrd criteria' });
+
   } else {
-    res.status(200).json({ message: 'User found' });
+    const user = await User.findOne({ email: upEmail });
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    } else {
+      res.status(200).json({ message: 'User found' });
+    }
+
+    console.log(upPassword_new);
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(upPassword_new, salt);
+
+    user.fullName = upName_new;
+    user.password = hashedPassword;
+
+    await user.save();
   }
-
-  console.log(upPassword_new);
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(upPassword_new, salt);
-
-  user.fullName = upName_new;
-  user.password = hashedPassword;
-
-  await user.save();
 
 })
 
@@ -192,8 +211,8 @@ app.get('/user/getAll', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 
-  
- 
+
+
 });
 
 
